@@ -20,14 +20,29 @@ namespace testpaint
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            int w = ClientRectangle.Width / 2;
-            int h = ClientRectangle.Height / 2;
+            int w = ClientRectangle.Width ;
+            int h = ClientRectangle.Height;
+            int min = Math.Min(w, h);
             e.Graphics.FillEllipse(
                 brush: Brushes.Red,
-                x: ClientRectangle.X + w / 2,
-                y: ClientRectangle.Y + h / 2,
-                width: w,
-                height: h);
+                x: (ClientRectangle.Width- min)/2,
+                y: (ClientRectangle.Height- min)/2,
+                width: min,
+                height: min) ;
+            
+            int x = 12;
+            e.Graphics.FillEllipse(
+                brush: Brushes.Blue,
+                x: (float)(ClientRectangle.Width -( min - Math.Pow(min, 1 / x))),
+                y: (float)(ClientRectangle.Height  -( min - Math.Pow(min,1 / x))),
+                width: (float) Math.Pow(min,1/x),
+                height: (float)Math.Pow(min,1/x));
+            
+            for (int i=0;i<x;i++)
+            {
+
+            }
         }
+       
     }
 }
