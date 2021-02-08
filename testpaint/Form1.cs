@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,23 +21,28 @@ namespace testpaint
         {
             base.OnPaint(e);
             int w = ClientRectangle.Width ;
-            int h = ClientRectangle.Height ;
-            int min = Math.Min(w,h);
+            int h = ClientRectangle.Height;
+            int min = Math.Min(w, h);
             e.Graphics.FillEllipse(
                 brush: Brushes.Red,
-                x: (w-min)/2 ,
-                y: (h -min)/2,
+                x: (ClientRectangle.Width- min)/2,
+                y: (ClientRectangle.Height- min)/2,
                 width: min,
-                height: min);
-            e.Graphics.DrawString(Convert.ToString(DateTime.Now), Font, Brushes.Blue, w, h);
+                height: min) ;
             
-        }
+            int x = 12;
+            e.Graphics.FillEllipse(
+                brush: Brushes.Blue,
+                x: (float)(ClientRectangle.Width -( min - Math.Pow(min, 1 / x))),
+                y: (float)(ClientRectangle.Height  -( min - Math.Pow(min,1 / x))),
+                width: (float) Math.Pow(min,1/x),
+                height: (float)Math.Pow(min,1/x));
+            
+            for (int i=0;i<x;i++)
+            {
 
-        private void timerSeconds_Tick(object sender, EventArgs e)
-        {
-            DateTime now = DateTime.Now;
-            Debug.WriteLine($"{now} {now.Hour} {now.Minute} {now.Second}");
-            Invalidate();
+            }
         }
+       
     }
 }
