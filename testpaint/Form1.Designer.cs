@@ -34,7 +34,6 @@
             // 
             // timerSeconds
             // 
-            this.timerSeconds.Enabled = true;
             this.timerSeconds.Interval = 1000;
             this.timerSeconds.Tick += new System.EventHandler(this.timerSeconds_Tick);
             // 
