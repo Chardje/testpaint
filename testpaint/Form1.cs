@@ -36,10 +36,10 @@ namespace testpaint
             skyBluePen.LineJoin = System.Drawing.Drawing2D.LineJoin.Bevel;
             for (int i=0;i<60;i++)
             {
-                float p1w = (float)((w / 2) + (Math.Cos(6 * i) * (min / 2-min/20)));
-                float p1h = (float)((h / 2) + (Math.Sin(6 * i) * (min / 2 - min / 20)));
-                float p2w = (float)((w/2)+(Math.Cos(6 * i) * min/2));
-                float p2h = (float)((h/2)+(Math.Sin(6 * i) * min/2));
+                float p1w = (float)((w / 2) + (Math.Cos(Math.PI / 30 * i) * (min / 2-min/20)));
+                float p1h = (float)((h / 2) + (Math.Sin(Math.PI/30 * i) * (min / 2 - min / 20)));
+                float p2w = (float)((w/2)+(Math.Cos(Math.PI / 30 * i) * min/2));
+                float p2h = (float)((h/2)+(Math.Sin(Math.PI / 30 * i) * min/2));
 
                 e.Graphics.DrawLine(skyBluePen,p1w,p1h,p2w,p2h);
             }
